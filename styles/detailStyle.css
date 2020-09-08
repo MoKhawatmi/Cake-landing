@@ -1,0 +1,21 @@
+.detail-footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.image-div{
+    margin:0 auto;
+    border: 5px solid #ffc107;
+    overflow: hidden;
+    width: 300px;
+    height: 250px;
+}
+
+.detail-image{
+    transition:1s;
+}
+
+.detail-image:hover{
+    transform: scale(1.1);
+}

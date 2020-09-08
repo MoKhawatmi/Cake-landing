@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <title>Cake</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../styles/style.css" rel="stylesheet" type="text/css">
+    <link href="../styles/detailStyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    {{> header}}
+
+    <div class="mx-auto my-5 text-center">
+        <div class="image-div">
+            <img class="detail-image" src="{{#if urlFlag}} ../{{cake.image}} {{else}} {{cake.image}} {{/if}}"
+                width="300" height="250">
+        </div>
+        <h3 class="my-3">{{cake.name}}</h3>
+        <p>{{cake.description}}</p>
+        <h4 class="text-warning">{{cake.price}}</h4>
+    </div>
+
+    <div class="detail-footer">
+        {{> footer}}
+    </div>
+</body>
+
+</html>

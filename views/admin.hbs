@@ -1,0 +1,265 @@
+<html>
+
+<head>
+    <title>Admin panel</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="../styles/adminStyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h2 class="mb-0">
+                    <button class="btn btn-warning btn-block text-center collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Add a new cake
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div>
+                        <h1 class="text-center mx-auto mt-5">Add a new cake</h1>
+                        <form action="/admin" method="POST" enctype="multipart/form-data"
+                            class="w-50 border border-success text-center m-auto">
+
+                            <div class="form-group">
+                                <label for="name">Cake name</label>
+                                <input id="name" class="form-control" type="text" name="name">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description">Cake Description</label>
+                                <input id="description" class="form-control" type="text" name="description">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">Cake price</label>
+                                <input id="price" class="form-control" type="text" name="price">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="image">Cake image</label>
+                                <input id="image" class="form-control" type="file" name="image" accept="image/*">
+                            </div>
+
+                            <input class="form-control" type="submit" value="add cake">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-warning btn-block text-center collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Manage cakes
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div>
+                        <h1 class="text-center mx-auto mt-5">Manage cakes</h1>
+                        <div class="container">
+                            <div class="row d-flex flex-lg-wrap justify-content-lg-center">
+
+                                {{#each cakes}}
+                                <div class="cake col-sm-3 border border-warning m-3 text-center">
+                                    <img class="mt-2" src="{{this.image}}" width="250px" height="200px">
+                                    <i class="edit-icon fa fa-pencil" data-toggle="modal" data-target="#myModal"
+                                        onclick="editClicked(this)" data-cake="{{this._id}}" aria-hidden="true"></i>
+                                    <hr class="bg-warning" />
+                                    <div class="latest-cakes-card">
+                                        <h3>{{this.name}}</h3>
+                                        <p>{{this.description}}</p>
+                                        <h4>{{this.price}}</h4>
+                                    </div>
+                                </div>
+                                {{/each}}
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingThree">
+                <h2 class="mb-0">
+                    <button class="btn btn-warning btn-block text-center collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Manage customer requests
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                <div class="card-body">
+                    <div>
+                        <h1 class="text-center mx-auto mt-5">Manage requests</h1>
+                        <div>
+                            {{#each requests}}
+
+                            {{#if this.completed}}
+
+                            <div class="request border border-success mx-2 my-4 p-3" data-request="{{this._id}}">
+                                <button id="mark" onclick="mark(this,{{this.completed}})"
+                                    class="mark-btn btn btn-success">Mark
+                                    incomplete</button>
+
+                                {{else}}
+
+                                <div class="request border border-warning mx-2 my-4 p-3" data-request="{{this._id}}">
+                                    <button id="mark" onclick="mark(this,{{this.completed}})"
+                                        class="mark-btn btn btn-warning">Mark
+                                        complete</button>
+
+                                    {{/if}}
+
+
+
+                                    <h6>Name: {{this.userName}}</h6>
+                                    <h6>Phone: {{this.userPhone}}</h6>
+                                    <h6>Location: {{this.userLocation}}</h6>
+                                    {{#if this.image}}
+                                    <img src="{{this.image}}" width="200" height="200">
+                                    {{/if}}
+                                    <p>Further details: {{this.orderDescription}}</p>
+                                </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h2 class="mb-0">
+                    <button class="btn btn-warning btn-block text-center collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Manage on sale cakes
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div class="card-body">
+                   {{#each cakes}}
+                        {{#if this.onSale}}
+                            <div class="d-flex justify-content-between my-3">
+                                <div class="d-flex">
+                            <img width="250" height="200" src="{{this.image}}">
+                            <div class="ml-3">
+                            <h5>{{this.name}}</h5>
+                            <h5>{{this.saleDescription}}</h5>
+                            </div>
+                            </div>
+                            <div data-saleid="{{this._id}}">
+                            <button class="btn h-25 my-2 w-100 btn-outline-warning d-block" data-toggle="modal" data-target="#editModal" onclick="(editSaleClicked(this))">Edit sale description</button>
+                            <button class="btn h-25 my-2 w-100 btn-outline-danger d-block" onclick="remvoveFromSale(this)">Remove from on sale</button>
+                            </div>
+                            </div>
+                        {{/if}}
+                   {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <!--Modal-->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit cake</h4>
+                    <button type="button" class="close m-0" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-form">
+                        <div class="form group mb-2">
+                            <label for="name" class="w-50">Cake name</label>
+                            <input type="text" class="form-control" name="name" id="name">
+                        </div>
+
+                        <div class="form group mb-2">
+                            <label for="description" class="w-50">Cake description</label>
+                            <input type="text" class="form-control" name="description" id="description">
+                        </div>
+
+                        <div class="form group mb-2">
+                            <label for="price" class="w-50">Cake price</label>
+                            <input type="text" class="form-control" name="price" id="price">
+                        </div>
+
+                        <div class="form group mb-2">
+                            <label for="image" class="w-50">Cake image</label>
+                            <input type="file" class="form-control" name="image" id="image" accept="image/*">
+                        </div>
+
+                        <div class="form-group mb-2">
+                                <input id="sale" class="d-inline" type="checkbox" name="sale" value="onSale" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                <label for="sale">Put on sale</label>
+                            </div>
+
+                            <div class="collapse form-group mb-2" id="collapseExample">
+                                <label for="saleDescription">Sale description</label>
+                                <input id="saleDescription" class="form-control" type="text" name="saleDescription">
+                            </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="delete-btn" type="button" class="btn btn-danger">Delete item</button>
+                    <button id="edit-btn" type="button" class="btn btn-warning" data-dismiss="modal">Done and
+                        edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="editModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Edit sale description</h4>
+                    <button type="button" class="close m-0" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <textarea class="form-control" id="editSaleDescArea" name="saleDescription"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button id="edit-btn" type="button" class="btn btn-warning" data-dismiss="modal" onclick="editSaleDesc()">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/adminScripts.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<html>
+
+    <head>
+        <title>Cakes</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="./styles/style.css" rel="stylesheet" type="text/css">
+        <link href="./styles/cakeStyle.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body class="parallax">
+      {{> header}}
+
+        <main>
+        <h1 class="text-center text-warning mt-5">The Best cakes around!</h1>
+
+        <div class="cake-grid w-75 my-5 mx-auto">
+
+              {{#each cakes}}
+              <div class="card border border-warning text-center w-75">
+                <div class="card-header bg-warning">
+                  {{this.name}}
+                </div>
+                <img class="mx-auto" width="250" height="200" src="{{this.image}}">
+                <hr class="bg-warning"/>
+                <div class="card-body pt-0">
+                    <p class="card-text">{{this.description}}</p>
+                    <hr class="bg-warning"/>
+                    <p class="card-text">{{this.price}}</p>
+                </div>
+              </div>
+              {{/each}}
+              
+        </div>
+
+    </main>
+    {{> footer}}
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+
+</html>

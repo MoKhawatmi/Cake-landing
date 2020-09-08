@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <title>Make an order</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="./styles/style.css" rel="stylesheet" type="text/css">
+    <link href="./styles/orderStyle.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    {{> header}}
+
+    <main>
+        <h1 class="text-center text-warning my-5">Create a custom order!</h1>
+
+        <div class="py-4 mx-auto form-div">
+
+            <form action="/order" method="POST" enctype="multipart/form-data" id="order-form" class="w-100">
+
+                <div class="form-group text-center">
+                    <label class="text-warning" for="name">Your name: </label>
+                    <input type="text" id="name" name="name" placeholder="Name" class="form-control order-input d-sm-inline-block mx-auto w-50" required>
+                </div>
+
+                <div class="form-group text-center">
+                    <label class="text-warning" for="phone">Your Phone: </label>
+                    <input type="number" id="phone" name="phone" placeholder="Phone" class="form-control order-input d-sm-inline-block mx-auto w-50" required>
+                </div>
+
+                <div class="form-group text-center">
+                    <label class="text-warning" for="location">Your location: </label>
+                    <input type="text" id="location" name="location" placeholder="Location" class="form-control order-input d-sm-inline-block mx-auto w-50">
+                </div>
+
+                <div class="form-group text-center">
+                    <label class="text-warning" for="image">Examplary image: </label>
+                    <input type="file" accept="image/*" id="image" name="image" class="form-control order-input d-sm-inline-block mx-auto w-50">
+                </div>
+
+                <div class="form-group text-center">
+                    <label class="text-warning text-center  mt-4" for="description">Order description: </label>
+                    <textarea rows="8" id="description" name="description" class="form-control order-input w-50 mx-auto"></textarea>
+                </div>
+                <input type="submit" class="btn btn-outline-warning d-block mx-auto" value="Submit order">
+            </form>
+        </div>
+
+        <div class="my-5">
+            <h4 class="text-center text-warning mx-3">you can create an example of your order <a href="/makeCake">here!</a> </h4>
+        </div>
+
+    </main>
+
+    {{> footer}}
+    <script src="./scripts/orderScripts.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+
+</html>

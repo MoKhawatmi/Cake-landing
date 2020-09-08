@@ -1,0 +1,99 @@
+<html>
+
+    <head>
+        <title>Custome Cake</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="./styles/style.css" rel="stylesheet" type="text/css">
+        <link href="./styles/makeCakeStyle.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+
+        {{> header}}
+
+        <main>
+            <div>
+                <h1 class="text-center text-warning my-5">How do you want your cake?</h1>
+
+                <div class="form-div w-50 py-4 my-4 mx-auto text-warning text-center">
+
+                    <form id="make-form" class="w-100">
+                        <div class="form-group my-3">
+                            <label for="icing">Cake Icing</label>
+                            <select class="form-control selector d-sm-inline-block mx-auto w-50" name="icing" id="icing">
+                                <option value="Buttercream">Buttercream</option>
+                                <option value="Fondant">Fondant</option>
+                                <option value="Royal Icing">Royal Icing</option>
+                                <option value="Ganache">Ganache</option>
+                                <option value="Whipped Cream">Whipped Cream</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group my-3">
+                            <label for="decoration">Cake decoration</label>
+                            <select class="form-control selector d-sm-inline-block mx-auto w-50" name="decoration" id="decoration">
+                                <option value="Gum Paste">Gum Paste</option>
+                                <option value="Piping">Piping</option>
+                                <option value="Pulled Sugar">Pulled Sugar</option>
+                                <option value="Dragees">Dragees</option>
+                                <option value="Floral Wire">Floral Wire</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group my-3">
+                            <label class="align-top" for="topping">Cake topping</label>
+                            <select class="form-control selector d-sm-inline-block mx-auto w-50" name="topping" id="topping" multiple>
+                                <option value="Fresh fruit">Fresh fruit</option>
+                                <option value="Mini chocolate candies">Mini chocolate candies</option>
+                                <option value="Powdered sugar">Powdered sugar</option>
+                                <option value="Nuts">Nuts</option>
+                                <option value="Candies">Candies</option>
+                                <option value="Sugar flowers">Sugar flowers</option>
+                            </select>
+                        </div>
+
+                        
+                        <div class="form-group my-3">
+                            <label for="amount">Topping amount</label>
+                            <input class="form-control d-sm-inline-block mx-auto w-50" name="amount" id="amount">
+                        </div>
+
+                        <div class="form-group my-3">
+                            <label class="w-50 text-center" for="four">
+                                <input class="d-inline" type="radio" name="sizing" value="four-inch" id="four" required>
+                                4-Inches: 8 Servings
+                            </label>
+
+                            <label class="w-50 text-center" for="six">
+                                <input class="d-inline" type="radio" name="sizing" value="six-inch" id="six">
+                                6-Inches: 12 Servings
+                            </label>
+
+                            <label class="w-50 text-center" for="eight">
+                                <input class="d-inline" type="radio" name="sizing" value="eight-inch" id="eight">
+                                8-Inches: 20 Servings
+                            </label>
+
+                            <label class="w-50 text-center" for="nine"> 
+                                <input class="d-inline" type="radio" name="sizing" value="nine-inch" id="nine">
+                                9-Inches: 24 Servings
+                            </label>
+                        </div>
+
+                        <input type="submit" class="btn btn-outline-warning" value="Go to order!">
+                    </form>
+
+                </div>
+            </div>
+        </main>
+
+        {{> footer}}
+        <script src="./scripts/makeCakeScripts.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    </body>
+
+</html>

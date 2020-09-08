@@ -1,0 +1,26 @@
+.cake{
+    position: relative;
+}
+
+.edit-icon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.edit-icon:hover{
+    color: greenyellow;
+}
+
+.request{
+    position: relative;
+}
+
+.mark-btn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 5px;
+}
